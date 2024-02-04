@@ -8,5 +8,28 @@ const UserProgressContext = createContext({
   hideCheckout: () => {},
 });
 
+export function UserProgressContextProvider({ children }) {
+  const [userProgress, setUserProgress] = useState("");
+  const userContext = {
+    progress: userProgress,
+    showCart: () => {
+      setUserProgress("cart");
+    },
+    hideCart: () => {
+      setUserProgress("");
+    },
+    showCheckout: () => {
+      setUserProgress("checkout");
+    },
+    hideCheckout: () => {
+      setUserProgress("");
+    },
+  };
+  return (
+    <UserProgressContext.Provider value={userContext}>
+      {children}
+    </UserProgressContext.Provider>
+  );
+}
 
-export 
+export default UserProgressContext;
