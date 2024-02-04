@@ -9,6 +9,7 @@ export default function Modal({ children, open, className = "" }) {
     if (open) {
       modal.showModal();
     }
+
     return () => modal.close();
   }, [open]);
 
